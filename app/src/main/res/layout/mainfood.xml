@@ -60,7 +60,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
-                        android:text="PLN"
+                        android:text="PLN "
                         android:textColor="@color/red" />
 
                     <TextView

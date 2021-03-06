@@ -29,7 +29,7 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.mainfood, parent, false);
-        return new ViewHolder(view); //3641
+        return new ViewHolder(view);
     }
 
     @Override
