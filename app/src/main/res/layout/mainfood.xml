@@ -15,6 +15,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         app:cardMaxElevation="5dp">
 
         <LinearLayout
@@ -28,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/ffs" />
+                app:srcCompat="@drawable/burger_drobiowy" />
 
             <LinearLayout
                 android:layout_width="match_parent"
