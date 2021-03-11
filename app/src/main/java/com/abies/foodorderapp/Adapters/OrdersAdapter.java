@@ -54,7 +54,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
             orderImage = itemView.findViewById(R.id.orderImage);
             foodOrderName = itemView.findViewById(R.id.orderFoodName);
             orderNumber = itemView.findViewById(R.id.OrderNumber);
-            price = itemView.findViewById(R.id.priceOrder);
+            price = itemView.findViewById(R.id.orderPrice);
         }
     }
 
