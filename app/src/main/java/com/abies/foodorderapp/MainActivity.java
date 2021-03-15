@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<MainModel> list = new ArrayList<>();
 
-        list.add(new MainModel(R.drawable.margherita, "Pizza Margherita", "38.50", "ser, sos, oregano"));
+        list.add(new MainModel(R.drawable.margherita, "Pizza Margherita", "38.55", "ser, sos, oregano"));
         list.add(new MainModel(R.drawable.peperoni, "Pizza Peperoni", "38.50", "ser, sos, oregano, papryka peperoni"));
         list.add(new MainModel(R.drawable.capriciosa, "Pizza Capriciosa", "40.50", "ser, sos, oregano, szynka, pieczarki"));
         list.add(new MainModel(R.drawable.roma, "Pizza Roma", "45.50", "bazylia, pomidory, salami, ser, sos"));

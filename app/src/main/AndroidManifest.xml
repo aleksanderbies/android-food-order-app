@@ -5,8 +5,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Pizza House"
+        android:roundIcon="@drawable/logo112px"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodOrderApp">
         <activity android:name=".SplashScreen">
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailActivity" />
-        <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".FavouriteActivity"></activity>
         <activity android:name=".MainActivity">
         </activity>
     </application>

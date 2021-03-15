@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".OrderActivity">
+    tools:context=".FavouriteActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/order" />
+        tools:listitem="@layout/favourite" />
 </LinearLayout>

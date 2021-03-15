@@ -131,7 +131,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Zamów teraz!"
+            android:text="Dodaj do koszyka"
+            app:cornerRadius="10dp" />
+
+        <Button
+            android:id="@+id/addToFav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="dodaj do ulubionych"
             app:cornerRadius="10dp" />
     </LinearLayout>
 </LinearLayout>
