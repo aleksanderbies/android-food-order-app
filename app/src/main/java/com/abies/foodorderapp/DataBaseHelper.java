@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     final static String DBNAME = "database.db";
-    final static int DBVERSION = 2;
+    final static int DBVERSION = 4;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVERSION);
@@ -20,30 +20,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
                 "create table favourites " +
-                        "(id integer primary key autoincrement," +
-                        "price double," +
-                        "image int," +
-                        "description text," +
-                        "foodname text)"
+                        "(foodname text primary key," +
+                        "price text," +
+                        "image int);"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP table if exists favourites");
+        db.execSQL("DROP table if exists favourites;");
         onCreate(db);
     }
 
-    public boolean insertFavourite(double price, int image, String desc, String foodName){
+    public boolean insertFavourite(String foodName, String price, int image){
         SQLiteDatabase database = getReadableDatabase();
         ContentValues values = new ContentValues();
-        values.put("name", price);
+        values.put("foodname", foodName);
         values.put("image", image);
         values.put("price", price);
-        values.put("description", desc);
-        values.put("foodname", foodName);
         long id = database.insert("favourites", null, values);
-
         if(id <= 0) {
             return false;
         }

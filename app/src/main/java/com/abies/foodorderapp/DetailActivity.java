@@ -28,15 +28,13 @@ public class DetailActivity extends AppCompatActivity {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        int image = getIntent().getIntExtra("image", 0);
+        final int image = getIntent().getIntExtra("image", 0);
         double price = parseDouble(getIntent().getStringExtra("price"));
         String name = getIntent().getStringExtra("name");
         String description = getIntent().getStringExtra("desc");
 
-        String priceView = String.valueOf(price);
-        if (priceView.length()==4){
-            priceView += "0";
-        }
+        final String priceView = String.valueOf(price)+"0";
+
         binding.detailImage.setImageResource(image);
         binding.priceLabel.setText(priceView);
         binding.nameBox.setText(name);
@@ -44,16 +42,13 @@ public class DetailActivity extends AppCompatActivity {
 
         DataBaseHelper helper = new DataBaseHelper(this);
 
-        binding.addToFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isInserted = helper.insertFavourite(price,image,description,name);
+        binding.addToFav.setOnClickListener(v -> {
+            boolean isInserted = helper.insertFavourite(name, priceView,image);
 
-                if (isInserted){
-                    Toast.makeText(DetailActivity.this, "Pomyślnie dodano do ulubionych", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(DetailActivity.this, "Błąd bazy danych.", Toast.LENGTH_SHORT).show();
-                }
+            if (isInserted){
+                Toast.makeText(DetailActivity.this, "Pomyślnie dodano do ulubionych", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(DetailActivity.this, "Błąd bazy danych.", Toast.LENGTH_SHORT).show();
             }
         });
     }
