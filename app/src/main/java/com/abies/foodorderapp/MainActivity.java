@@ -1,10 +1,14 @@
 package com.abies.foodorderapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.abies.foodorderapp.Adapters.MainAdapter;
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<MainModel> list = new ArrayList<>();
 
-        list.add(new MainModel(R.drawable.margherita, "Pizza Margherita", "38.55", "ser, sos, oregano"));
+        list.add(new MainModel(R.drawable.margherita, "Pizza Margherita", "38.50", "ser, sos, oregano"));
         list.add(new MainModel(R.drawable.peperoni, "Pizza Peperoni", "38.50", "ser, sos, oregano, papryka peperoni"));
         list.add(new MainModel(R.drawable.capriciosa, "Pizza Capriciosa", "40.50", "ser, sos, oregano, szynka, pieczarki"));
         list.add(new MainModel(R.drawable.roma, "Pizza Roma", "45.50", "bazylia, pomidory, salami, ser, sos"));
@@ -53,5 +57,21 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerview.setLayoutManager(layoutManager);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Favourites:
+                startActivity(new Intent(MainActivity.this, FavouriteActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

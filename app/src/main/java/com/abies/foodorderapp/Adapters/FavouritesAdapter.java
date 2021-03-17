@@ -55,5 +55,4 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
             priceFav = itemView.findViewById(R.id.priceFav);
         }
     }
-
 }

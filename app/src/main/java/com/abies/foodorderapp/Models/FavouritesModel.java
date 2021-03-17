@@ -5,6 +5,8 @@ public class FavouritesModel {
     int favImage;
     String favFoodName, priceFav;
 
+    public FavouritesModel(){}
+
     public FavouritesModel(int orderImage, String favFoodName, String priceFav) {
         this.favImage = orderImage;
         this.favFoodName = favFoodName;
@@ -15,7 +17,7 @@ public class FavouritesModel {
         return favImage;
     }
 
-    public void setFavImage(int orderImage) {
+    public void setFavImage(int favImage) {
         this.favImage = favImage;
     }
 

@@ -18,16 +18,16 @@ public class FavouriteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logoactionbar);
+
         binding = ActivityFavouriteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ArrayList<FavouritesModel> list = new ArrayList<>();
-        list.add(new FavouritesModel(R.drawable.burger_drobiowy, "Burger drobiowy", "13.50"));
-        list.add(new FavouritesModel(R.drawable.burger_drobiowy, "Burger drobiowy", "13.50"));
-        list.add(new FavouritesModel(R.drawable.burger_drobiowy, "Burger drobiowy", "13.50"));
-        list.add(new FavouritesModel(R.drawable.burger_drobiowy, "Burger drobiowy", "13.50"));
-        list.add(new FavouritesModel(R.drawable.burger_drobiowy, "Burger drobiowy", "13.50"));
-        list.add(new FavouritesModel(R.drawable.burger_drobiowy, "Burger drobiowy", "13.50"));
+        DataBaseHelper helper = new DataBaseHelper(this);
+        ArrayList<FavouritesModel> list = helper.getFavourites();
+
 
         FavouritesAdapter adapter = new FavouritesAdapter(list, this);
         binding.orderRecycleView.setAdapter(adapter);
