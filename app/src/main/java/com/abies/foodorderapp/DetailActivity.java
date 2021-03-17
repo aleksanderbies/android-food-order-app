@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -28,28 +29,39 @@ public class DetailActivity extends AppCompatActivity {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        final int image = getIntent().getIntExtra("image", 0);
-        double price = parseDouble(getIntent().getStringExtra("price"));
-        String name = getIntent().getStringExtra("name");
-        String description = getIntent().getStringExtra("desc");
+        final DataBaseHelper helper = new DataBaseHelper(this);
 
-        final String priceView = String.valueOf(price)+"0";
+        if (getIntent().getIntExtra("type", 0) == 1) {
+            final int image = getIntent().getIntExtra("image", 0);
+            double price = parseDouble(getIntent().getStringExtra("price"));
+            String name = getIntent().getStringExtra("name");
+            String description = getIntent().getStringExtra("desc");
 
-        binding.detailImage.setImageResource(image);
-        binding.priceLabel.setText(priceView);
-        binding.nameBox.setText(name);
-        binding.detailDescription.setText(description);
+            final String priceView = String.valueOf(price) + "0";
 
-        DataBaseHelper helper = new DataBaseHelper(this);
+            binding.detailImage.setImageResource(image);
+            binding.priceLabel.setText(priceView);
+            binding.nameBox.setText(name);
+            binding.detailDescription.setText(description);
 
-        binding.addToFav.setOnClickListener(v -> {
-            boolean isInserted = helper.insertFavourite(name, priceView,image);
+            binding.addToFav.setOnClickListener(v -> {
+                boolean isInserted = helper.insertFavourite(name, priceView, image);
 
-            if (isInserted){
-                Toast.makeText(DetailActivity.this, "Pomyślnie dodano do ulubionych", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(DetailActivity.this, "Błąd bazy danych.", Toast.LENGTH_SHORT).show();
-            }
-        });
+                if (isInserted) {
+                    Toast.makeText(DetailActivity.this, "Pomyślnie dodano do ulubionych", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(DetailActivity.this, "Błąd bazy danych.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            String name = getIntent().getStringExtra("name");
+            Cursor cursor = helper.getFavByName(name);
+
+            binding.detailImage.setImageResource(cursor.getInt(2));
+            binding.priceLabel.setText(cursor.getString(1));
+            binding.nameBox.setText(cursor.getString(0));
+            //binding.detailDescription.setText(description);
+            binding.addToFav.setText("Usuń z ulubionych");
+        }
     }
 }

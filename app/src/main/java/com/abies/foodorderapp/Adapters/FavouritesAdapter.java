@@ -1,6 +1,7 @@
 package com.abies.foodorderapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abies.foodorderapp.DetailActivity;
 import com.abies.foodorderapp.Models.FavouritesModel;
 import com.abies.foodorderapp.R;
 
@@ -38,6 +40,16 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
         holder.favImage.setImageResource(model.getFavImage());
         holder.favFoodName.setText(model.getFavFoodName());
         holder.priceFav.setText(model.getPriceFav());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("name", model.getFavFoodName());
+                intent.putExtra("type",2);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

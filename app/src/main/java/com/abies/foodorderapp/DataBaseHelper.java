@@ -67,4 +67,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         database.close();
         return favouritesFood;
     }
+
+    public Cursor getFavByName(String name){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("Select foodname, price, image from favourites where foodname=?", new String[] {name});
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public Cursor ifExists(String name){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("Select foodname from favourites where foodname=?", new String[] {name});
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
 }

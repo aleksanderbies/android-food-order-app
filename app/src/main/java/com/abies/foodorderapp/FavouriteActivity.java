@@ -28,7 +28,6 @@ public class FavouriteActivity extends AppCompatActivity {
         DataBaseHelper helper = new DataBaseHelper(this);
         ArrayList<FavouritesModel> list = helper.getFavourites();
 
-
         FavouritesAdapter adapter = new FavouritesAdapter(list, this);
         binding.orderRecycleView.setAdapter(adapter);
 

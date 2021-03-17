@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abies.foodorderapp.DataBaseHelper;
 import com.abies.foodorderapp.DetailActivity;
 import com.abies.foodorderapp.Models.MainModel;
 import com.abies.foodorderapp.R;
@@ -37,6 +38,7 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final MainModel model = list.get(position);
+
         holder.foodImage.setImageResource(model.getImage());
         holder.mainName.setText(model.getName());
         holder.price.setText(model.getPrice());
@@ -48,6 +50,7 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             intent.putExtra("price", model.getPrice());
             intent.putExtra("desc", model.getDescription());
             intent.putExtra("name", model.getName());
+            intent.putExtra("type",1);
             context.startActivity(intent);
         });
     }
