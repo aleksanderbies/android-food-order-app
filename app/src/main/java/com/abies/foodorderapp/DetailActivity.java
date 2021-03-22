@@ -59,15 +59,18 @@ public class DetailActivity extends AppCompatActivity {
 
             binding.detailImage.setImageResource(cursor.getInt(2));
             binding.priceLabel.setText(cursor.getString(1));
-            binding.nameBox.setText(cursor.getString(0));
+            String nameFav = cursor.getString(0);
+            binding.nameBox.setText(nameFav);
             binding.detailDescription.setText(cursor.getString(3));
             binding.addToFav.setText("Usuń z ulubionych");
 
-            binding.addToFav.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
+            binding.addToFav.setOnClickListener(v -> {
+              int isDeleted = helper.deleteFav(nameFav);
+              if( isDeleted > 0){
+                  Toast.makeText(DetailActivity.this, "Usunięto", Toast.LENGTH_SHORT).show();
+              } else {
+                  Toast.makeText(DetailActivity.this, "Błąd bazy danych", Toast.LENGTH_SHORT).show();
+              }
             });
         }
     }

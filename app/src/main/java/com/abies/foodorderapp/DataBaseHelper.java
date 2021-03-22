@@ -57,7 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ArrayList<FavouritesModel> favouritesFood = new ArrayList<>();
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery("Select foodname, price, image, description from favourites;", null);
-        if(cursor.moveToFirst()){
+        if(cursor!=null){
             while (cursor.moveToNext()){
                 FavouritesModel model = new FavouritesModel();
                 model.setFavFoodName(cursor.getString(0));
@@ -79,5 +79,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    public int deleteFav(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("favourites", "name=" + name, null);
     }
 }
