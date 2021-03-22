@@ -2,6 +2,7 @@ package com.abies.foodorderapp.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final MainModel model = list.get(position);
 
+
         holder.foodImage.setImageResource(model.getImage());
         holder.mainName.setText(model.getName());
         holder.price.setText(model.getPrice());
@@ -50,7 +52,7 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             intent.putExtra("price", model.getPrice());
             intent.putExtra("desc", model.getDescription());
             intent.putExtra("name", model.getName());
-            intent.putExtra("type",1);
+            intent.putExtra("type", 1);
             context.startActivity(intent);
         });
     }

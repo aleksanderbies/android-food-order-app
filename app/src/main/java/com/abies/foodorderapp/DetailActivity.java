@@ -45,7 +45,7 @@ public class DetailActivity extends AppCompatActivity {
             binding.detailDescription.setText(description);
 
             binding.addToFav.setOnClickListener(v -> {
-                boolean isInserted = helper.insertFavourite(name, priceView, image);
+                boolean isInserted = helper.insertFavourite(name, priceView, image, description);
 
                 if (isInserted) {
                     Toast.makeText(DetailActivity.this, "Pomyślnie dodano do ulubionych", Toast.LENGTH_SHORT).show();
@@ -60,8 +60,15 @@ public class DetailActivity extends AppCompatActivity {
             binding.detailImage.setImageResource(cursor.getInt(2));
             binding.priceLabel.setText(cursor.getString(1));
             binding.nameBox.setText(cursor.getString(0));
-            //binding.detailDescription.setText(description);
+            binding.detailDescription.setText(cursor.getString(3));
             binding.addToFav.setText("Usuń z ulubionych");
+
+            binding.addToFav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 }

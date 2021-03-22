@@ -46,7 +46,7 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("name", model.getFavFoodName());
-                intent.putExtra("type",2);
+                intent.putExtra("type", 2);
                 context.startActivity(intent);
             }
         });

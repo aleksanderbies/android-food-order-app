@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     final static String DBNAME = "database.db";
-    final static int DBVERSION = 5;
+    final static int DBVERSION = 6;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVERSION);
@@ -27,7 +27,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "create table favourites " +
                         "(foodname text primary key," +
                         "price text," +
+                        "description text," +
                         "image int);"
+
         );
     }
 
@@ -37,12 +39,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertFavourite(String foodName, String price, int image){
+    public boolean insertFavourite(String foodName, String price, int image, String description){
         SQLiteDatabase database = getReadableDatabase();
         ContentValues values = new ContentValues();
         values.put("foodname", foodName);
         values.put("image", image);
         values.put("price", price);
+        values.put("description", description);
         long id = database.insert("favourites", null, values);
         if(id <= 0) {
             return false;
@@ -53,13 +56,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public ArrayList<FavouritesModel> getFavourites(){
         ArrayList<FavouritesModel> favouritesFood = new ArrayList<>();
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("Select foodname, price, image from favourites;", null);
+        Cursor cursor = database.rawQuery("Select foodname, price, image, description from favourites;", null);
         if(cursor.moveToFirst()){
             while (cursor.moveToNext()){
                 FavouritesModel model = new FavouritesModel();
                 model.setFavFoodName(cursor.getString(0));
                 model.setPriceFav(cursor.getString(1));
                 model.setFavImage(cursor.getInt(2));
+                model.setDescriptionFav(cursor.getString(3));
                 favouritesFood.add(model);
             }
         }
@@ -70,16 +74,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Cursor getFavByName(String name){
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("Select foodname, price, image from favourites where foodname=?", new String[] {name});
-        if(cursor!=null){
-            cursor.moveToFirst();
-        }
-        return cursor;
-    }
-
-    public Cursor ifExists(String name){
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("Select foodname from favourites where foodname=?", new String[] {name});
+        Cursor cursor = database.rawQuery("Select foodname, price, image, description from favourites where foodname=?", new String[] {name});
         if(cursor!=null){
             cursor.moveToFirst();
         }
