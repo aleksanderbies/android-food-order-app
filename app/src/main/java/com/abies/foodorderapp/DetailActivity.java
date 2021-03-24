@@ -31,6 +31,8 @@ public class DetailActivity extends AppCompatActivity {
 
         final DataBaseHelper helper = new DataBaseHelper(this);
 
+        Intent mainIntent = new Intent(DetailActivity.this, MainActivity.class);
+
         //System.out.println("HELPER: " + helper.getFavByName("Gyr").getString(1));
 
         if (getIntent().getIntExtra("type", 0) == 1) {
@@ -50,6 +52,8 @@ public class DetailActivity extends AppCompatActivity {
                 boolean isInserted = helper.insertFavourite(name, priceView, image, description);
 
                 if (isInserted) {
+                    DetailActivity.this.startActivity(mainIntent);
+                    DetailActivity.this.finish();
                     Toast.makeText(DetailActivity.this, "Pomyślnie dodano do ulubionych", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(DetailActivity.this, "Błąd bazy danych.", Toast.LENGTH_SHORT).show();
@@ -69,7 +73,6 @@ public class DetailActivity extends AppCompatActivity {
               int isDeleted = helper.deleteFav(nameFav);
               if( isDeleted > 0){
                   Toast.makeText(DetailActivity.this, "Usunięto", Toast.LENGTH_SHORT).show();
-                  Intent mainIntent = new Intent(DetailActivity.this, MainActivity.class);
                   DetailActivity.this.startActivity(mainIntent);
                   DetailActivity.this.finish();
               } else {

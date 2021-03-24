@@ -3,6 +3,7 @@ package com.abies.foodorderapp.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,15 +47,12 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         holder.price.setText(model.getPrice());
         holder.description.setText(model.getDescription());
 
-
-
         holder.itemView.setOnClickListener(v -> {
-            int inBase;
-            try{
-                helper.getFavByName(model.getName());
-                inBase = 2;
-            }catch (RuntimeException e){
-                inBase = 1;
+            int inBase=1;
+            try{helper.getFavByName(model.getName());
+                inBase++;
+            }catch (RuntimeException sqle) {
+                sqle.printStackTrace();
             }
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("image", model.getImage());
