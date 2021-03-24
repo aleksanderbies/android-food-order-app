@@ -39,20 +39,29 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final MainModel model = list.get(position);
-
+        final DataBaseHelper helper = new DataBaseHelper(context);
 
         holder.foodImage.setImageResource(model.getImage());
         holder.mainName.setText(model.getName());
         holder.price.setText(model.getPrice());
         holder.description.setText(model.getDescription());
 
+
+
         holder.itemView.setOnClickListener(v -> {
+            int inBase;
+            try{
+                helper.getFavByName(model.getName());
+                inBase = 2;
+            }catch (RuntimeException e){
+                inBase = 1;
+            }
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("image", model.getImage());
             intent.putExtra("price", model.getPrice());
             intent.putExtra("desc", model.getDescription());
             intent.putExtra("name", model.getName());
-            intent.putExtra("type", 1);
+            intent.putExtra("type", inBase);
             context.startActivity(intent);
         });
     }

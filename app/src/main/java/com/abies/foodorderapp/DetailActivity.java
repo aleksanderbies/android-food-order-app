@@ -31,6 +31,8 @@ public class DetailActivity extends AppCompatActivity {
 
         final DataBaseHelper helper = new DataBaseHelper(this);
 
+        //System.out.println("HELPER: " + helper.getFavByName("Gyr").getString(1));
+
         if (getIntent().getIntExtra("type", 0) == 1) {
             final int image = getIntent().getIntExtra("image", 0);
             double price = parseDouble(getIntent().getStringExtra("price"));
@@ -56,7 +58,6 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             String name = getIntent().getStringExtra("name");
             Cursor cursor = helper.getFavByName(name);
-
             binding.detailImage.setImageResource(cursor.getInt(2));
             binding.priceLabel.setText(cursor.getString(1));
             String nameFav = cursor.getString(0);
