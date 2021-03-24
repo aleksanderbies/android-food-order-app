@@ -83,6 +83,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public int deleteFav(String name){
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("favourites", "name=" + name, null);
+        return db.delete("favourites", "foodname=?", new String[] {name});
     }
 }

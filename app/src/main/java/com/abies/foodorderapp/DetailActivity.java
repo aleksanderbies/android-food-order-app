@@ -68,9 +68,13 @@ public class DetailActivity extends AppCompatActivity {
               int isDeleted = helper.deleteFav(nameFav);
               if( isDeleted > 0){
                   Toast.makeText(DetailActivity.this, "Usunięto", Toast.LENGTH_SHORT).show();
+                  Intent mainIntent = new Intent(DetailActivity.this, MainActivity.class);
+                  DetailActivity.this.startActivity(mainIntent);
+                  DetailActivity.this.finish();
               } else {
                   Toast.makeText(DetailActivity.this, "Błąd bazy danych", Toast.LENGTH_SHORT).show();
               }
+
             });
         }
     }
