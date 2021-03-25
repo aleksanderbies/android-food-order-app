@@ -48,12 +48,14 @@ public class MainAdapter  extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         holder.description.setText(model.getDescription());
 
         holder.itemView.setOnClickListener(v -> {
-            int inBase=1;
-            try{helper.getFavByName(model.getName());
-                inBase++;
-            }catch (RuntimeException sqle) {
-                sqle.printStackTrace();
+            int inBase;
+
+            Boolean inDB = helper.inDB(model.getName());
+            if (inDB){
+                inBase = 2;
             }
+            else inBase = 1;
+
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("image", model.getImage());
             intent.putExtra("price", model.getPrice());

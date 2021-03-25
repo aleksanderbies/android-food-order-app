@@ -81,6 +81,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public boolean inDB(String name){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("Select foodname, price, image, description from favourites where foodname=?", new String[] {name});
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        else {
+            cursor.close();
+            return true;
+        }
+    }
+
     public int deleteFav(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete("favourites", "foodname=?", new String[] {name});
