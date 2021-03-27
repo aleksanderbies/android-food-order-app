@@ -1,4 +1,3 @@
-//48:41
 package com.abies.foodorderapp.Models;
 
 public class MainModel {

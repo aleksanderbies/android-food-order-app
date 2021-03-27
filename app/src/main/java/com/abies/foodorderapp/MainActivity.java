@@ -68,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.Basket:
+                startActivity(new Intent(MainActivity.this, BasketActivity.class));
+                break;
             case R.id.Favourites:
                 startActivity(new Intent(MainActivity.this, FavouriteActivity.class));
                 break;
