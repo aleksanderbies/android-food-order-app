@@ -4,6 +4,8 @@ public class BasketModel {
     int basketFoodImage;
     String basketFoodName, basketPrice, basketQuantity;
 
+    public BasketModel(){ }
+
     public BasketModel(int basketFoodImage, String basketFoodName, String basketPrice, String basketQuantity) {
         this.basketFoodImage = basketFoodImage;
         this.basketFoodName = basketFoodName;

@@ -32,8 +32,7 @@ public class DetailActivity extends AppCompatActivity {
         final DataBaseHelper helper = new DataBaseHelper(this);
 
         Intent mainIntent = new Intent(DetailActivity.this, MainActivity.class);
-
-        //System.out.println("HELPER: " + helper.getFavByName("Gyr").getString(1));
+        Intent basketIntent = new Intent(DetailActivity.this, BasketActivity.class);
 
         if (getIntent().getIntExtra("type", 0) == 1) {
             final int image = getIntent().getIntExtra("image", 0);
@@ -47,6 +46,21 @@ public class DetailActivity extends AppCompatActivity {
             binding.priceLabel.setText(priceView);
             binding.nameBox.setText(name);
             binding.detailDescription.setText(description);
+
+            binding.insertButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean inBasket = helper.insertToBasket(name, priceView, image, "1");
+                    if(inBasket){
+                        DetailActivity.this.startActivity(basketIntent);
+                        DetailActivity.this.finish();
+                        Toast.makeText(DetailActivity.this, "Dodano do koszyka", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(DetailActivity.this, "Wystąpił błąd.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
 
             binding.addToFav.setOnClickListener(v -> {
                 boolean isInserted = helper.insertFavourite(name, priceView, image, description);
@@ -62,13 +76,30 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             String name = getIntent().getStringExtra("name");
             Cursor cursor = helper.getFavByName(name);
-            binding.detailImage.setImageResource(cursor.getInt(2));
-            binding.priceLabel.setText(cursor.getString(1));
+            int favFoodImage = cursor.getInt(2);
+            String favFoodPrice = cursor.getString(1);
             String nameFav = cursor.getString(0);
+            String favFoodDecription = cursor.getString(3);
+            binding.detailImage.setImageResource(favFoodImage);
+            binding.priceLabel.setText(favFoodPrice);
             binding.nameBox.setText(nameFav);
-            binding.detailDescription.setText(cursor.getString(3));
+            binding.detailDescription.setText(favFoodDecription);
             binding.addToFav.setText("Usuń z ulubionych");
 
+            binding.insertButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean inBasket = helper.insertToBasket(name, favFoodPrice, favFoodImage, "1");
+                    if(inBasket){
+                        DetailActivity.this.startActivity(basketIntent);
+                        DetailActivity.this.finish();
+                        Toast.makeText(DetailActivity.this, "Dodano do koszyka", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(DetailActivity.this, "Wystąpił błąd.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
             binding.addToFav.setOnClickListener(v -> {
               int isDeleted = helper.deleteFav(nameFav);
               if( isDeleted > 0){

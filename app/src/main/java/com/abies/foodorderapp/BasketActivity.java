@@ -1,9 +1,13 @@
 package com.abies.foodorderapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.abies.foodorderapp.Adapters.BasketAdapter;
@@ -26,13 +30,29 @@ public class BasketActivity extends AppCompatActivity {
         binding = ActivityBasketBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ArrayList<BasketModel> basket = new ArrayList<>();
-        basket.add(new BasketModel(R.drawable.peperoni, "HAOFHLA", "2.00", "1"));
+        DataBaseHelper helper = new DataBaseHelper(this);
+        ArrayList<BasketModel> basket = helper.getProductsFromBasket();
 
         BasketAdapter adapter = new BasketAdapter(basket, this);
         binding.basketRecyclerView.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.basketRecyclerView.setLayoutManager(layoutManager);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.basket_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.BackToMenu:
+                startActivity(new Intent(BasketActivity.this, MainActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
