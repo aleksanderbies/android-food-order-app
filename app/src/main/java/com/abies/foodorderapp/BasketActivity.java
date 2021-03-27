@@ -21,12 +21,13 @@ public class BasketActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.logoactionbar);
         binding = ActivityBasketBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         ArrayList<BasketModel> basket = new ArrayList<>();
-        basket.add(new BasketModel(R.drawable.margherita,"Pizza Margherita","38.50", "1" ));
-        basket.add(new BasketModel(R.drawable.peperoni,"Pizza Peperoni","38.50", "1" ));
+        basket.add(new BasketModel(R.drawable.peperoni, "HAOFHLA", "2.00", "1"));
 
         BasketAdapter adapter = new BasketAdapter(basket, this);
         binding.basketRecyclerView.setAdapter(adapter);

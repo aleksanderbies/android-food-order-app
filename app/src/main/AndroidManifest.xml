@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/logo112px"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodOrderApp">
-        <activity android:name=".BasketActivity"></activity>
+        <activity android:name=".BasketActivity"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".DetailActivity" />
         <activity android:name=".FavouriteActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
