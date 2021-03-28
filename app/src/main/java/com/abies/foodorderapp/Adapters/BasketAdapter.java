@@ -1,6 +1,7 @@
 package com.abies.foodorderapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 helper.deleteFromBasket(model.getId());
+                //context.startActivity(BasketActivity.class);
             }
         });
     }

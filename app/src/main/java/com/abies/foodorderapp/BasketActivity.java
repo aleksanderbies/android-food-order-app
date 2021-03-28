@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.abies.foodorderapp.Adapters.BasketAdapter;
 import com.abies.foodorderapp.Models.BasketModel;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 public class BasketActivity extends AppCompatActivity {
 
     ActivityBasketBinding binding;
+    DataBaseHelper helper = new DataBaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,6 @@ public class BasketActivity extends AppCompatActivity {
         binding = ActivityBasketBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        DataBaseHelper helper = new DataBaseHelper(this);
         ArrayList<BasketModel> basket = helper.getProductsFromBasket();
 
         BasketAdapter adapter = new BasketAdapter(basket, this);
@@ -53,7 +55,12 @@ public class BasketActivity extends AppCompatActivity {
                 startActivity(new Intent(BasketActivity.this, MainActivity.class));
                 break;
             case R.id.Order:
-                startActivity(new Intent(BasketActivity.this, OrderActivity.class));
+                ArrayList<BasketModel> basket = helper.getProductsFromBasket();
+                if(basket.isEmpty()){
+                    Toast.makeText(BasketActivity.this, "Nie można złożyć zamówienia ponieważ koszyk jest pusty!", Toast.LENGTH_LONG).show();
+                }else {
+                    startActivity(new Intent(BasketActivity.this, OrderActivity.class));
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -17,12 +17,9 @@ public class FinishActivity extends AppCompatActivity {
 
         ImageView backToMenu = findViewById(R.id.backToApp);
 
-        backToMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FinishActivity.this.startActivity(new Intent(FinishActivity.this, MainActivity.class));
-                FinishActivity.this.finish();
-            }
+        backToMenu.setOnClickListener(v -> {
+            FinishActivity.this.startActivity(new Intent(FinishActivity.this, MainActivity.class));
+            FinishActivity.this.finish();
         });
     }
 }

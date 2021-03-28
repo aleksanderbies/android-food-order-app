@@ -148,4 +148,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete("basket", "id=" + id, null);
     }
+
+    public void clearBasket(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from basket;");
+    }
 }
