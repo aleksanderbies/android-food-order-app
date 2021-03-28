@@ -6,10 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.abies.foodorderapp.BasketActivity;
+import com.abies.foodorderapp.DataBaseHelper;
+import com.abies.foodorderapp.DetailActivity;
 import com.abies.foodorderapp.Models.BasketModel;
 import com.abies.foodorderapp.R;
 
@@ -34,12 +38,18 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        DataBaseHelper helper = new DataBaseHelper(context);
         final BasketModel model = basket.get(position);
         holder.basketFoodImage.setImageResource(model.getBasketFoodImage());
         holder.basketFoodName.setText(model.getBasketFoodName());
         holder.basketFoodPrice.setText(model.getBasketPrice());
         holder.basketFoodQuantity.setText(model.getBasketQuantity());
-
+        holder.deleteFromBasket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helper.deleteFromBasket(model.getId());
+            }
+        });
     }
 
     @Override
@@ -48,7 +58,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView basketFoodImage;
+        ImageView basketFoodImage, deleteFromBasket;
         TextView basketFoodName, basketFoodPrice, basketFoodQuantity;
 
         public ViewHolder(@NonNull View itemView) {
@@ -57,6 +67,8 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
             basketFoodName= itemView.findViewById(R.id.basketFoodName);
             basketFoodPrice= itemView.findViewById(R.id.basketFoodPrice);
             basketFoodQuantity= itemView.findViewById(R.id.basketFoodQuantity);
+            deleteFromBasket = itemView.findViewById(R.id.deleteFromBasket);
+
         }
     }
 }

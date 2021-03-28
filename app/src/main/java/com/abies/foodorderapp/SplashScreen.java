@@ -17,13 +17,10 @@ public class SplashScreen extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent mainIntent = new Intent(SplashScreen.this, MainActivity.class);
-                SplashScreen.this.startActivity(mainIntent);
-                SplashScreen.this.finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent mainIntent = new Intent(SplashScreen.this, MainActivity.class);
+            SplashScreen.this.startActivity(mainIntent);
+            SplashScreen.this.finish();
         }, time);
     }
 }

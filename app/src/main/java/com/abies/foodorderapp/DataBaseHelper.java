@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     final static String DBNAME = "database.db";
-    final static int DBVERSION = 7;
+    final static int DBVERSION = 8;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBNAME, null, DBVERSION);
@@ -100,7 +100,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public ArrayList<BasketModel> getProductsFromBasket(){
         ArrayList<BasketModel> insideBasket = new ArrayList<>();
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("Select foodname, price, image, quantity from basket;", null);
+        Cursor cursor = database.rawQuery("Select foodname, price, image, quantity, id from basket;", null);
         if(cursor!=null){
             while (cursor.moveToNext()){
                 BasketModel model = new BasketModel();
@@ -108,6 +108,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 model.setBasketFoodName(cursor.getString(0));
                 model.setBasketPrice(cursor.getString(1));
                 model.setBasketQuantity(cursor.getString(3));
+                model.setId(cursor.getInt(4));
                 insideBasket.add(model);
             }
         }
@@ -141,5 +142,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public int deleteFav(String name){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete("favourites", "foodname=?", new String[] {name});
+    }
+
+    public int deleteFromBasket(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("basket", "id=" + id, null);
     }
 }

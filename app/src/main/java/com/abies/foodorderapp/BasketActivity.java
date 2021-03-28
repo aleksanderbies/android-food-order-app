@@ -52,6 +52,9 @@ public class BasketActivity extends AppCompatActivity {
             case R.id.BackToMenu:
                 startActivity(new Intent(BasketActivity.this, MainActivity.class));
                 break;
+            case R.id.Order:
+                startActivity(new Intent(BasketActivity.this, OrderActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

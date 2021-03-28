@@ -41,14 +41,11 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
         holder.favFoodName.setText(model.getFavFoodName());
         holder.priceFav.setText(model.getPriceFav());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("name", model.getFavFoodName());
-                intent.putExtra("type", 2);
-                context.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("name", model.getFavFoodName());
+            intent.putExtra("type", 2);
+            context.startActivity(intent);
         });
     }
 

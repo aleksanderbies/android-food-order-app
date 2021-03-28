@@ -1,16 +1,17 @@
 package com.abies.foodorderapp.Models;
 
 public class BasketModel {
-    int basketFoodImage;
+    int basketFoodImage, id;
     String basketFoodName, basketPrice, basketQuantity;
 
     public BasketModel(){ }
 
-    public BasketModel(int basketFoodImage, String basketFoodName, String basketPrice, String basketQuantity) {
+    public BasketModel(int basketFoodImage, String basketFoodName, String basketPrice, String basketQuantity, int id) {
         this.basketFoodImage = basketFoodImage;
         this.basketFoodName = basketFoodName;
         this.basketPrice = basketPrice;
         this.basketQuantity = basketQuantity;
+        this.id = id;
     }
 
     public int getBasketFoodImage() {
@@ -43,5 +44,13 @@ public class BasketModel {
 
     public void setBasketQuantity(String basketQuantity) {
         this.basketQuantity = basketQuantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
