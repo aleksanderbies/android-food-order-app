@@ -1,5 +1,6 @@
 package com.abies.foodorderapp.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -49,7 +50,10 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 helper.deleteFromBasket(model.getId());
-                //context.startActivity(BasketActivity.class);
+                Intent intent = new Intent(context, BasketActivity.class);
+                Toast.makeText(context, "Produkt został usunięty", Toast.LENGTH_SHORT).show();
+                context.startActivity(intent);
+                ((Activity) context).finish();
             }
         });
     }
