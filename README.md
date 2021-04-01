@@ -22,7 +22,7 @@ Main Activity of my Food Order App is Menu that contains names, prices, and desc
 On action bar there are also menu, that contains "Go to basket" and "Go to Favourites" function. User can click on them and see the contents of the basket or favourites list.
 
 <p align="left"> 
-    <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/mainactivity_menu.png?raw=true" widht ="300px"/>
+    <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/mainactivity_menu.png?raw=true" widht ="100px"/>
 </p>
 
 ### Products details, adding to favourites food and adding to basket
