@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Food Order App</string>
-    <string name="descriptionFood">Simple description</string>
+    <string name="descriptionFood">Sample description</string>
 </resources>
