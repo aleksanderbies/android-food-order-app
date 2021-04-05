@@ -28,6 +28,12 @@ public class OrderActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         phoneNumber = findViewById(R.id.phoneNumber);
 
+        nameAndSurname.setOnClickListener(v -> nameAndSurname.setText(""));
+        addressAndNumber.setOnClickListener(v -> addressAndNumber.setText(""));
+        postCodeAndCity.setOnClickListener(v -> postCodeAndCity.setText(""));
+        email.setOnClickListener(v -> email.setText(""));
+        phoneNumber.setOnClickListener(v -> phoneNumber.setText(""));
+
         Button orderNow = findViewById(R.id.orderNow);
 
         orderNow.setOnClickListener(v -> {
