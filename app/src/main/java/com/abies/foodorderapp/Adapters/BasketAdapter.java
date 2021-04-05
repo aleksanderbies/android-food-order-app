@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abies.foodorderapp.BasketActivity;
 import com.abies.foodorderapp.DataBaseHelper;
-import com.abies.foodorderapp.DetailActivity;
 import com.abies.foodorderapp.Models.BasketModel;
 import com.abies.foodorderapp.R;
 
@@ -72,7 +71,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
             basketFoodImage = itemView.findViewById(R.id.basketFoodImage);
             basketFoodName= itemView.findViewById(R.id.basketFoodName);
             basketFoodPrice= itemView.findViewById(R.id.basketFoodPrice);
-            basketFoodQuantity= itemView.findViewById(R.id.basketFoodQuantity);
+            basketFoodQuantity= itemView.findViewById(R.id.addingFoodQuantity);
             deleteFromBasket = itemView.findViewById(R.id.deleteFromBasket);
 
         }
