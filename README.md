@@ -58,7 +58,7 @@ If user choose "Order" function in basket activity, user gets to order form.
 ### Final screen
 When user ordered food, he can see the final screen
 <p align="left"> 
-    <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/order_screen.png?raw=true" widht ="300px"/>
+    <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/finish-screen.png?raw=true" widht ="300px"/>
 </p>
 
 License
