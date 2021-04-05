@@ -14,6 +14,7 @@ After click on icon in Android OS we can see the "Splash screen" during the app 
 <p align="left"> 
     <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/splashscreen.png?raw=true" widht ="300px"/>
 </p>
+
 ### Main Activity (Menu)
 Main Activity of my Food Order App is Menu that contains names, prices, and description of the food. User can click on the food and see more details.
 <p align="left"> 
