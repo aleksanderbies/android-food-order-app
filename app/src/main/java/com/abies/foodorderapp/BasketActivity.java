@@ -5,18 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.abies.foodorderapp.Adapters.BasketAdapter;
 import com.abies.foodorderapp.Models.BasketModel;
-import com.abies.foodorderapp.Models.MainModel;
 import com.abies.foodorderapp.databinding.ActivityBasketBinding;
-import com.abies.foodorderapp.databinding.ActivityFavouriteBinding;
 
 import java.util.ArrayList;
 
