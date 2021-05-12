@@ -20,20 +20,20 @@ Main Activity of my Food Order App is Menu that contains names, prices, and desc
 <p align="left"> 
     <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/mainactivity.png?raw=true" widht ="300px"/>
 </p>
-On action bar there are also menu, that contains "Go to basket" and "Go to Favourites" function. User can click on them and see the contents of the basket or favourites list.
+On action bar there are also menu, that contains "Go to basket" and "Go to Favorites" function. User can click on them and see the contents of the basket or favorites list.
 
 <p align="left"> 
     <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/mainactivity_menu.png?raw=true" widht ="100px"/>
 </p>
 
-### Products details, adding to favourites food and adding to basket
-On the product details screen user can add/remove food from favourites food list (if food is on favourites list user can remove them, otherwise user can add them), change quantity of the food and add them to basket. 
+### Products details, adding to favorites food and adding to basket
+On the product details screen user can add/remove food from favorites food list (if food is on favorites list user can remove them, otherwise user can add them), change quantity of the food and add them to basket. 
 <p align="left"> 
     <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/fooddetails.png?raw=true" widht ="300px"/>
 </p>
 
-### Favourites food list
-Favourites food list contains food added by user. User can click on them to see more details or add them to basket / delete from the favourites list. 
+### Favorites food list
+Favorites food list contains food added by user. User can click on them to see more details or add them to basket / delete from the favorites list. 
 <p align="left"> 
     <img src="https://github.com/aleksanderbies/android-food-order-app/blob/master/screenshots/fav_food.png?raw=true" widht ="300px"/>
 </p>
